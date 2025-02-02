@@ -1,2 +1,2 @@
 # Sec_coding_lab
-Secure Coding Course Training and files
+Training Files for Secure Coding Course
