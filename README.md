@@ -1,4 +1,4 @@
-# Sec_coding_lab
+# Sec_Coding_Lab
 Training Files for Secure Coding Course
 
 <h2> #first_section </h2>
