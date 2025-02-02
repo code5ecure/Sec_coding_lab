@@ -15,5 +15,6 @@ CREATE TABLE Users (
     Username NVARCHAR(50) NOT NULL,
     Password NVARCHAR(50) NOT NULL
 );
+![image](https://github.com/user-attachments/assets/f3456315-a376-4347-a19d-dd4c101e56ef)
 
 <b>The goal of this section is to make configurations in the web.config file that provide resistance against DOS attacks at the application level. </b>
