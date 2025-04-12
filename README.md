@@ -18,3 +18,15 @@ CREATE TABLE Users (
 ![image](https://github.com/user-attachments/assets/f3456315-a376-4347-a19d-dd4c101e56ef)
 
 <b>The goal of this section is to make configurations in the web.config file that provide resistance against DOS attacks at the application level. </b>
+
+<h2> #11'st_section </h2>
+1. Create a new ASP.NET Core Web API project.
+        dotnet new webapi -n SerializationSecurity
+
+2. install packages
+dotnet add package Newtonsoft.Json
+dotnet add package Google.Protobuf
+dotnet add package System.Xml
+
+3. add files to your project.
+find vulnerabilities and fix them in sec 11 
