@@ -29,22 +29,21 @@ An ASP.NET Core Web API project that implements user registration, authenticatio
 ## 🚀 Getting Started
 
 ### 1. Clone the Repository
+<br><br>
 
-
-git clone https://github.com/yourusername/UserProfileApi.git
-cd UserProfileApi
-2. Configure Database
-Update your appsettings.json:
-
-
-"ConnectionStrings": {
-  "DefaultConnection": "Server=localhost;Database=UserProfileDb;User Id=sa;Password=YourPasswordHere;MultipleActiveResultSets=true"
-}
+git clone [https://github.com/yourusername/UserProfileApi.git](https://github.com/code5ecure/Sec_coding_lab.git)
+cd UserProfileApi <br>
+2. Configure Database <br>
+Update your appsettings.json:<br>
+"ConnectionStrings": {<br>
+  "DefaultConnection": "Server=localhost;Database=UserProfileDb;User Id= ;Password=<>;MultipleActiveResultSets=true"<br>
+}<br>
 3. Run EF Core Migrations
-
-dotnet tool install --global dotnet-ef  # if not already installed
-dotnet ef migrations add Init
-dotnet ef database update
-4. Run the API
+<br>
+dotnet tool install --global dotnet-ef  # if not already installed br>
+dotnet ef migrations add Init<br>
+dotnet ef database update  <br>
+4. Run the API  <br>
 
 dotnet run
+<br>
