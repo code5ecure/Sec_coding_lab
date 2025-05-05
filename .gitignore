@@ -1,0 +1,38 @@
+## ASP.NET Core
+bin/
+obj/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+.vscode/
+.env
+.env.local
+.vs/
+
+## Rider / VS Code / JetBrains
+.idea/
+.vscode/
+*.code-workspace
+
+## Logs
+*.log
+logs/
+Log/
+Logs/
+
+## Secrets
+secrets.json
+appsettings.*.json.user
+
+## EF Core
+Migrations/
+
+## Runtime
+*.db
+*.pidb
+*.pdb
+
+## OS Files
+.DS_Store
+Thumbs.db
