@@ -32,5 +32,23 @@ Ideal for use behind an API Gateway (e.g., Kong).
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/yourusername/UserProfileApi.git
+git clone https://github.com/code5ecure/Sec_coding_lab/UserProfileApi.git
 cd UserProfileApi
+
+
+2. Configure Database:
+
+Update your appsettings.json:
+
+"ConnectionStrings": {
+  "DefaultConnection": "Server=localhost;Database=UserProfileDb;User Id=sa;Password=YourPasswordHere;MultipleActiveResultSets=true"
+}
+
+3. Run EF Core Migrations
+
+dotnet tool install --global dotnet-ef  
+dotnet ef migrations add Init
+dotnet ef database update
+
+4. Run
+dotnet run
