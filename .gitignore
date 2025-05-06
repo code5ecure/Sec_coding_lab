@@ -9,7 +9,8 @@ obj/
 .env
 .env.local
 .vs/
-
+README.md
+README.txt
 ## Rider / VS Code / JetBrains
 .idea/
 .vscode/
@@ -32,6 +33,9 @@ Migrations/
 *.db
 *.pidb
 *.pdb
+
+# dependencies
+/node_modules
 
 ## OS Files
 .DS_Store
