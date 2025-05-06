@@ -20,7 +20,7 @@ namespace UserProfileApi.Controllers
         [HttpPost("register")]
         public async Task<IActionResult> Register([FromBody] RegisterDto model)
         {
-            var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+            var user = new ApplicationUser { UserName = model.Email, Email = model.Email, Bio = model.Bio ?? "Default bio here", FullName = model.FullName ?? "Default full name" };
             var result = await _userManager.CreateAsync(user, model.Password);
             return result.Succeeded ? Ok() : BadRequest(result.Errors);
         }
@@ -56,7 +56,7 @@ namespace UserProfileApi.Controllers
             return result.Succeeded ? Ok() : BadRequest(result.Errors);
         }
 
-        public class RegisterDto { public string Email { get; set; } public string Password { get; set; } }
+        public class RegisterDto { public string Email { get; set; } public string Password { get; set; } public string? Bio { get; set; } public string? FullName { get; set; } }
         public class LoginDto { public string Email { get; set; } public string Password { get; set; } }
         public class PasswordResetRequestDto { public string Email { get; set; } }
         public class PasswordResetDto { public string Email { get; set; } public string Token { get; set; } public string NewPassword { get; set; } }
