@@ -1,0 +1,50 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Upload Example</title>
+    <script src="https://cdn.jsdelivr.net/npm/tus-js-client@2.3.0/dist/tus.min.js"></script> <!-- Correct CDN -->
+</head>
+
+@{
+    ViewData["Title"] = "Home";
+}
+<h1>File Upload Demo</h1>
+
+<section>
+    <h2>Uploader #1: Header Check</h2>
+    <form asp-controller="FileUpload" asp-action="Upload" method="post" enctype="multipart/form-data">
+        <input type="file" name="file" />
+        <button type="submit">Upload (Header Check)</button>
+    </form>
+</section>
+
+<section>
+    <h2>Uploader #2: Extension GUID (%00 bypass)</h2>
+    <form asp-controller="Uploader2" asp-action="Upload" method="post" enctype="multipart/form-data">
+        <input type="file" name="file" />
+        <button type="submit">Upload (Extension Check GUID)</button>
+    </form>
+</section>
+
+<section>
+    <h2>Uploader #3: Secure Resumable (tusdotnet)</h2>
+    <input type="file" id="tus-file" accept="image/png, image/jpeg" />
+    <button id="tus-upload">Upload via tus</button>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tus-js-client/2.6.0/tus.min.js"></script>
+    <script>
+      document.getElementById('tus-upload').addEventListener('click', function () {
+        var file = document.getElementById('tus-file').files[0];
+        if (!file) { alert('Select a file!'); return; }
+        var upload = new tus.Upload(file, {
+          endpoint: '/tusfiles/',
+          metadata: {
+            filename: file.name,
+            filetype: file.type
+          },
+          onError: function(error) { alert('Upload failed: ' + error); },
+          onSuccess: function() { alert('Upload finished successfully'); }
+        });
+        upload.start();
+      });
+    </script>
+</section>
