@@ -27,24 +27,57 @@
 </section>
 
 <section>
-    <h2>Uploader #3: Secure Resumable (tusdotnet)</h2>
-    <input type="file" id="tus-file" accept="image/png, image/jpeg" />
-    <button id="tus-upload">Upload via tus</button>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tus-js-client/2.6.0/tus.min.js"></script>
+     <h2>Secure Image Upload with tusdotnet</h2>
+    <input type="file" id="tus-upload" accept="image/jpeg,image/png">
+    <button onclick="uploadFile()">Upload</button>
+
+    <div id="download-link" style="margin-top: 20px;"></div>
+
     <script>
-      document.getElementById('tus-upload').addEventListener('click', function () {
-        var file = document.getElementById('tus-file').files[0];
-        if (!file) { alert('Select a file!'); return; }
-        var upload = new tus.Upload(file, {
-          endpoint: '/tusfiles/',
-          metadata: {
-            filename: file.name,
-            filetype: file.type
-          },
-          onError: function(error) { alert('Upload failed: ' + error); },
-          onSuccess: function() { alert('Upload finished successfully'); }
-        });
-        upload.start();
-      });
+        function uploadFile() {
+            var fileInput = document.getElementById('tus-upload');
+            var file = fileInput.files[0];
+            if (!file) {
+                alert("Please choose a file first.");
+                return;
+            }
+
+            var upload = new tus.Upload(file, {
+                endpoint: "/tusfiles",
+                retryDelays: [0, 1000, 3000, 5000],
+                metadata: {
+                    filename: file.name,
+                    filetype: file.type
+                },
+                onError: function(error) {
+                    console.error("Upload failed:", error);
+                    alert("Upload failed: " + error);
+                },
+                onProgress: function(bytesUploaded, bytesTotal) {
+                    var percentage = (bytesUploaded / bytesTotal * 100).toFixed(2);
+                    console.log(bytesUploaded, bytesTotal, percentage + "%");
+                },
+                onSuccess: function() {
+                    var url = upload.url;
+                    var fileId = url.substring(url.lastIndexOf("/") + 1);
+                    var extension = file.name.split('.').pop();
+                    var finalFileName = fileId + '.' + extension;
+                    showDownloadLink(finalFileName);
+                }
+            });
+
+            upload.start();
+        }
+
+        function showDownloadLink(fileName) {
+            const link = document.createElement('a');
+            link.href = '/uploads/' + fileName;
+            link.innerText = 'Download Uploaded Image';
+            link.target = '_blank';
+
+            const container = document.getElementById('download-link');
+            container.innerHTML = '';
+            container.appendChild(link);
+        }
     </script>
-</section>
+    </section>
