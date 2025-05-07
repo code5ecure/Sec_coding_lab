@@ -9,6 +9,7 @@ obj/
 .env
 .env.local
 .vs/
+/wwwroot/uploads/
 README.md
 README.txt
 ## Rider / VS Code / JetBrains
