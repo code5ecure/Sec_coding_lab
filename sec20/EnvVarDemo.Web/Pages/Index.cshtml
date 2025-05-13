@@ -1,0 +1,27 @@
+@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<h2>API Key Authentication Test</h2>
+
+<input type="text" id="apiKeyInput" placeholder="Enter your API key" />
+<button onclick="callApi()">Call API</button>
+
+<p id="result"></p>
+
+<script>
+    async function callApi() {
+        const apiKey = document.getElementById("apiKeyInput").value;
+        const response = await fetch("@Model.ApiUrl", {
+    method: "POST",
+    headers: {
+        "X-API-KEY": apiKey
+    }
+});
+
+        const resultText = await response.text();
+        document.getElementById("result").innerText = resultText;
+    }
+</script>
