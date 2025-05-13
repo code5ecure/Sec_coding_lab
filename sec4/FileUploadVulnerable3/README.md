@@ -56,7 +56,7 @@ Run the desired project:<br>
 
 
 dotnet run --project FileUploadSecureTus <br>  
-Visit http://localhost:5000 and upload an image.<br> 
+Visit https://localhost:48084 and upload an image.<br> 
 
 ![Capture](https://github.com/user-attachments/assets/4c11a8b1-ffc9-4077-ae2a-0fa3260ae47c)
 
